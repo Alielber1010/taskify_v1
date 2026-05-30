@@ -1,0 +1,518 @@
+{
+  "info": {
+    "name": "Taskify API - Final",
+    "_postman_id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+    "description": "SECJ4383 Assignment 2 - Taskify Spring Boot REST API. Auto-captures taskId from POST response.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "type": "string",
+      "description": "Auto-filled by the POST Create Task script. Do not edit manually."
+    }
+  ],
+  "item": [
+    {
+      "name": "--- CREATE TASKS ---",
+      "item": [
+        {
+          "name": "Create Task 1 - VALID ✅ (auto-saves ID)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json && json.id) {",
+                  "    pm.collectionVariables.set('taskId', json.id);",
+                  "    console.log('taskId saved: ' + json.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Complete Assignment 2\",\n  \"description\": \"Build Spring Boot REST API for Software Construction subject\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "VALID - Creates a task and auto-saves the UUID into {{taskId}} for use in all other requests. Expect: 201 Created"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 2 - VALID ✅",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json && json.id) {",
+                  "    pm.collectionVariables.set('taskId', json.id);",
+                  "    console.log('taskId saved: ' + json.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Study for Finals\",\n  \"description\": \"Revise all topics from week 1 to week 14\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "VALID - Creates a task and updates {{taskId}}. Expect: 201 Created"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 3 - VALID ✅",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json && json.id) {",
+                  "    pm.collectionVariables.set('taskId', json.id);",
+                  "    console.log('taskId saved: ' + json.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Submit Lab Report\",\n  \"description\": \"Write and submit the network lab report by Friday\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "VALID - Creates a task and updates {{taskId}}. Expect: 201 Created"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 4 - VALID ✅",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json && json.id) {",
+                  "    pm.collectionVariables.set('taskId', json.id);",
+                  "    console.log('taskId saved: ' + json.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Fix Login Bug\",\n  \"description\": \"Debug and fix the NullPointerException on the login endpoint\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "VALID - Creates a task and updates {{taskId}}. Expect: 201 Created"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 5 - VALID ✅",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json && json.id) {",
+                  "    pm.collectionVariables.set('taskId', json.id);",
+                  "    console.log('taskId saved: ' + json.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Team Meeting Prep\",\n  \"description\": \"Prepare slides and agenda for the weekly team sync\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "VALID - Creates a task and updates {{taskId}}. Expect: 201 Created"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 6 - INVALID ❌ (missing title)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"This task has no title field at all\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "INVALID - title missing. @NotBlank fires. Expect: 400 Bad Request - 'Title is required'"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 7 - INVALID ❌ (missing description)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Task with no description\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "INVALID - description missing. @NotBlank fires. Expect: 400 Bad Request - 'Description is required'"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 8 - INVALID ❌ (blank whitespace title)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"   \",\n  \"description\": \"Title is only whitespace - @NotBlank rejects this\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "INVALID - title is whitespace only. @NotBlank specifically rejects blank strings. Expect: 400 Bad Request - 'Title is required'"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 9 - INVALID ❌ (empty body)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "INVALID - empty JSON. Both @NotBlank validations fire. Expect: 400 Bad Request with both error messages"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task 10 - INVALID ❌ (broken JSON syntax)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Broken JSON\"\n  \"description\": \"Missing comma above this line\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "INVALID - malformed JSON missing comma. Spring throws HttpMessageNotReadableException. Expect: 400 Bad Request"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "--- READ TASKS ---",
+      "item": [
+        {
+          "name": "Get All Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            },
+            "description": "Get all tasks. Expect: 200 OK with array of tasks"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Task by ID - VALID ✅ (uses {{taskId}})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{taskId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{taskId}}"]
+            },
+            "description": "Get task using auto-captured UUID from the last successful POST. Expect: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Task by ID - INVALID ❌ (fake UUID)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/00000000-0000-0000-0000-000000000000",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "00000000-0000-0000-0000-000000000000"]
+            },
+            "description": "Get task with non-existent UUID. Expect: 404 Not Found"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "--- SEARCH & FILTER ---",
+      "item": [
+        {
+          "name": "Search by Title - VALID ✅ (finds results)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/search?title=Assignment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "search"],
+              "query": [{ "key": "title", "value": "Assignment" }]
+            },
+            "description": "Search tasks where title contains 'Assignment'. Expect: 200 OK with matching tasks"
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Title - VALID ✅ (no results)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/search?title=xyznotexist",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "search"],
+              "query": [{ "key": "title", "value": "xyznotexist" }]
+            },
+            "description": "Search tasks with a title that matches nothing. Expect: 200 OK with empty array []"
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Status TODO - VALID ✅",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/status?status=TODO",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "status"],
+              "query": [{ "key": "status", "value": "TODO" }]
+            },
+            "description": "Filter tasks with status TODO. All newly created tasks default to TODO. Expect: 200 OK with list"
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Status DONE - VALID ✅",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/status?status=DONE",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "status"],
+              "query": [{ "key": "status", "value": "DONE" }]
+            },
+            "description": "Filter tasks with status DONE. Run after updating a task. Expect: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Status - INVALID ❌ (bad enum value)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/status?status=FLYING",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "status"],
+              "query": [{ "key": "status", "value": "FLYING" }]
+            },
+            "description": "INVALID - FLYING is not a valid TaskStatus enum value (only TODO or DONE). Expect: 400 Bad Request"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "--- UPDATE TASKS ---",
+      "item": [
+        {
+          "name": "Update Status to DONE - VALID ✅ (uses {{taskId}})",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{taskId}}/status?status=DONE",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{taskId}}", "status"],
+              "query": [{ "key": "status", "value": "DONE" }]
+            },
+            "description": "IMPORTANT - status is a @RequestParam NOT a request body. No body needed. Uses auto-captured {{taskId}}. Expect: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Status to TODO - VALID ✅ (uses {{taskId}})",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{taskId}}/status?status=TODO",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{taskId}}", "status"],
+              "query": [{ "key": "status", "value": "TODO" }]
+            },
+            "description": "Revert status back to TODO. No body needed - status is a @RequestParam. Expect: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Status - INVALID ❌ (fake UUID)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/00000000-0000-0000-0000-000000000000/status?status=DONE",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "00000000-0000-0000-0000-000000000000", "status"],
+              "query": [{ "key": "status", "value": "DONE" }]
+            },
+            "description": "INVALID - task ID does not exist. Expect: 404 Not Found"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Status - INVALID ❌ (bad enum value)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{taskId}}/status?status=PENDING",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{taskId}}", "status"],
+              "query": [{ "key": "status", "value": "PENDING" }]
+            },
+            "description": "INVALID - PENDING is not a valid enum value (only TODO or DONE). Expect: 400 Bad Request"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "--- DELETE TASKS ---",
+      "item": [
+        {
+          "name": "Delete Task - VALID ✅ (uses {{taskId}})",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{taskId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{taskId}}"]
+            },
+            "description": "Delete the last created task using auto-captured {{taskId}}. Expect: 204 No Content"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Task - INVALID ❌ (fake UUID)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/00000000-0000-0000-0000-000000000000",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "00000000-0000-0000-0000-000000000000"]
+            },
+            "description": "INVALID - task ID does not exist. Expect: 404 Not Found"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
