@@ -4,7 +4,7 @@ import com.example.taskify.controller.request.TaskRequestDTO;
 import com.example.taskify.controller.response.TaskResponseDTO;
 import com.example.taskify.model.TaskStatus;
 import com.example.taskify.model.Task;
-import com.example.taskify.service.TaskService;
+import com.example.taskify.service.TaskServiceInterface;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,17 +14,17 @@ import java.util.List;
 @RequestMapping("/api/tasks")
 public class TaskController {
 
-    private final TaskService service;
+    private final TaskServiceInterface taskServiceInterface;
 
-    public TaskController(TaskService service) {
-        this.service = service;
+    public TaskController( TaskServiceInterface taskServiceInterface) {
+        this.taskServiceInterface = taskServiceInterface;
     }
 
     // CREATE
     @PostMapping
     public ResponseEntity<TaskResponseDTO> create(@RequestBody TaskRequestDTO dto) {
         Task task = toDomain(dto);
-        TaskResponseDTO response = toDTO(service.createTask(task));
+        TaskResponseDTO response = toDTO(taskServiceInterface.createTask(task));
         return ResponseEntity.status(201).body(response);
     }
 
@@ -32,20 +32,20 @@ public class TaskController {
     @GetMapping
     public ResponseEntity<List<TaskResponseDTO>> getAll() {
         return ResponseEntity.ok(
-                service.getAllTasks().stream().map(this::toDTO).toList()
+                taskServiceInterface.getAllTasks().stream().map(this::toDTO).toList()
         );
     }
 
     // GET BY ID
     @GetMapping("/{id}")
     public ResponseEntity<TaskResponseDTO> getById(@PathVariable String id) {
-        return ResponseEntity.ok(toDTO(service.getTaskById(id)));
+        return ResponseEntity.ok(toDTO(taskServiceInterface.getTaskById(id)));
     }
 
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
-        service.deleteTask(id);
+        taskServiceInterface.deleteTask(id);
         return ResponseEntity.noContent().build();
     }
 
@@ -53,7 +53,7 @@ public class TaskController {
     @GetMapping("/search")
     public ResponseEntity<List<TaskResponseDTO>> search(@RequestParam String title) {
         return ResponseEntity.ok(
-                service.searchByTitle(title).stream().map(this::toDTO).toList()
+                taskServiceInterface.searchByTitle(title).stream().map(this::toDTO).toList()
         );
     }
 
@@ -61,7 +61,7 @@ public class TaskController {
     @GetMapping("/status")
     public ResponseEntity<List<TaskResponseDTO>> filter(@RequestParam TaskStatus status) {
         return ResponseEntity.ok(
-                service.filterByStatus(status).stream().map(this::toDTO).toList()
+                taskServiceInterface.filterByStatus(status).stream().map(this::toDTO).toList()
         );
     }
 
@@ -72,7 +72,7 @@ public class TaskController {
             @RequestParam TaskStatus status) {
 
         return ResponseEntity.ok(
-                toDTO(service.updateStatus(id, status))
+                toDTO(taskServiceInterface.updateStatus(id, status))
         );
     }
 
